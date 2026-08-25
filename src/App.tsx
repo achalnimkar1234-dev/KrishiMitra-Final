@@ -17,6 +17,7 @@ import { SavedAdvicePage } from '@/pages/SavedAdvicePage';
 import { OverviewPage } from '@/pages/OverviewPage';
 import { GovernmentSubsidyPage } from '@/pages/GovernmentSubsidyPage';
 import { SolarPumpPage } from '@/pages/SolarPumpPage';
+import { WeatherForecastPage } from '@/pages/WeatherForecastPage';
 import { AdminDemoPage } from '@/pages/AdminDemoPage';
 
 function RequireFarmer({ children }: { children: ReactNode }) {
@@ -45,6 +46,7 @@ function AppRoutes() {
       <Route path="/subsidy" element={<RequireFarmer><Layout><GovernmentSubsidyPage /></Layout></RequireFarmer>} />
       <Route path="/government-subsidy" element={<RequireFarmer><Layout><GovernmentSubsidyPage /></Layout></RequireFarmer>} />
       <Route path="/solar-pump" element={<RequireFarmer><Layout><SolarPumpPage /></Layout></RequireFarmer>} />
+      <Route path="/weather" element={<RequireFarmer><Layout><WeatherForecastPage /></Layout></RequireFarmer>} />
       <Route path="*" element={<Navigate to="/login" replace />} />
     </Routes>
   );

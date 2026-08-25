@@ -1,5 +1,5 @@
 import { useNavigate, useLocation } from 'react-router-dom';
-import { LayoutGrid, MapPin, FlaskConical, Sprout, LineChart, ShieldCheck, Bookmark, Building2, Sun } from 'lucide-react';
+import { LayoutGrid, MapPin, FlaskConical, Sprout, LineChart, ShieldCheck, Bookmark, Building2, Sun, CloudSun } from 'lucide-react';
 import { useSession } from '@/components/SessionContext';
 import { useTranslation } from '@/i18n/LanguageContext';
 
@@ -22,6 +22,7 @@ export function Sidebar() {
     { path: '/saved', label: t('nav.savedAdvice'), icon: Bookmark },
     { path: '/subsidy', label: t('nav.governmentSubsidy'), icon: Building2 },
     { path: '/solar-pump', label: t('nav.solarPump'), icon: Sun },
+    { path: '/weather', label: t('nav.weatherForecast'), icon: CloudSun },
   ];
 
   const isActive = (path: string) => location.pathname === path || location.pathname.startsWith(path + '/');

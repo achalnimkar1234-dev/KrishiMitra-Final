@@ -96,20 +96,16 @@ export function MarketPage() {
           </p>
         </Card>
 
-        {/* Card 4: Est. Net Return or Est. Gross Value */}
+        {/* Card 4: Estimated Gross Value */}
         <Card className="p-4 border-l-4 border-l-emerald-600 bg-emerald-50/30">
           <p className="text-xs text-gray-500 font-medium">
-            {market.isCostReliable && market.estNetReturn !== null
-              ? t('market.estNetReturn')
-              : t('market.estGrossValue')}
+            {t('market.estGrossValue')}
           </p>
           <p className="mt-1 text-2xl font-bold text-emerald-800">
-            {market.isCostReliable && market.estNetReturn !== null
-              ? formatRupee(market.estNetReturn)
-              : formatRupee(market.estGrossValue)}
+            {formatRupee(market.estGrossValue)}
           </p>
           <p className="mt-1 text-xs text-emerald-700 font-medium">
-            {market.isCostReliable ? 'Estimated net return' : 'Estimated gross value'}
+            {t('market.estGrossValue')}
           </p>
         </Card>
       </div>
@@ -175,29 +171,10 @@ export function MarketPage() {
                   )}
                 </td>
               </tr>
-              <tr className="bg-gray-50/40">
-                <td className="py-3 px-4 text-gray-700 font-medium">{t('market.estGrossValue')}</td>
-                <td className="py-3 px-4 text-right font-bold text-gray-900">
-                  {formatRupee(market.estGrossValue)}
-                </td>
-              </tr>
-              {market.isCostReliable && market.estCultivationCost !== null && (
-                <tr>
-                  <td className="py-3 px-4 text-gray-600">{t('market.estCultivationCost')}</td>
-                  <td className="py-3 px-4 text-right font-medium text-red-600">
-                    − {formatRupee(market.estCultivationCost)}
-                    <span className="text-xs text-gray-400 font-normal ml-1">(@ {formatRupee(market.cacpCostPerQuintal || 0)}/q CACP norm)</span>
-                  </td>
-                </tr>
-              )}
               <tr className="bg-brand-50/60 font-semibold text-brand-900">
-                <td className="py-3.5 px-4 text-brand-900">
-                  {market.isCostReliable ? t('market.estNetReturn') : t('market.estGrossValue')}
-                </td>
+                <td className="py-3.5 px-4 text-brand-900 font-semibold">{t('market.estGrossValue')}</td>
                 <td className="py-3.5 px-4 text-right text-lg font-bold text-brand-700">
-                  {market.isCostReliable && market.estNetReturn !== null
-                    ? formatRupee(market.estNetReturn)
-                    : formatRupee(market.estGrossValue)}
+                  {formatRupee(market.estGrossValue)}
                 </td>
               </tr>
             </tbody>
@@ -211,7 +188,7 @@ export function MarketPage() {
           <HelpCircle className="h-4 w-4 text-brand-600" />
           {t('market.howCalculated')}
         </h4>
-        <div className="grid gap-2 text-xs text-gray-600 sm:grid-cols-3">
+        <div className="grid gap-2 text-xs text-gray-600 sm:grid-cols-2">
           <div className="rounded-lg bg-white p-3 border border-gray-100 shadow-2xs">
             <span className="font-semibold text-gray-700 block mb-1">1. {t('market.estProduction')}</span>
             <p>{t('market.calcProductionFormula')}</p>
@@ -223,15 +200,6 @@ export function MarketPage() {
             <p className="mt-1 text-gray-400 font-mono">
               ({market.estProduction} q × {formatRupee(market.hasMsp && market.mspValue ? market.mspValue : market.marketPrice)} = {formatRupee(market.estGrossValue)})
             </p>
-          </div>
-          <div className="rounded-lg bg-white p-3 border border-gray-100 shadow-2xs">
-            <span className="font-semibold text-gray-700 block mb-1">3. {t('market.estNetReturn')}</span>
-            <p>{market.isCostReliable ? t('market.calcNetFormula') : t('market.calcNonMspNotice')}</p>
-            {market.isCostReliable && market.estNetReturn !== null && (
-              <p className="mt-1 text-gray-400 font-mono">
-                ({formatRupee(market.estGrossValue)} − {formatRupee(market.estCultivationCost || 0)} = {formatRupee(market.estNetReturn)})
-              </p>
-            )}
           </div>
         </div>
       </Card>

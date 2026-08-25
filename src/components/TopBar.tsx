@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { Sprout, LogOut } from 'lucide-react';
+import { Sprout, LogOut, CloudSun } from 'lucide-react';
 import { Modal } from '@/components/Modal';
 import { Button } from '@/components/ui';
 import { useSession } from '@/components/SessionContext';
@@ -47,7 +47,23 @@ export function TopBar() {
             </div>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2.5 sm:gap-3">
+            {farmerId && (
+              <button
+                type="button"
+                onClick={() => navigate('/weather')}
+                className={`inline-flex items-center gap-1.5 rounded-lg border px-2.5 py-1.5 text-xs font-medium transition-all shadow-xs ${
+                  location.pathname === '/weather'
+                    ? 'border-brand-500 bg-brand-50 text-brand-700 font-semibold ring-1 ring-brand-400'
+                    : 'border-gray-200 bg-white text-gray-700 hover:border-brand-300 hover:bg-brand-50/60 hover:text-brand-700'
+                }`}
+                title={t('nav.weatherForecast')}
+              >
+                <CloudSun className="h-4 w-4 text-brand-600" />
+                <span className="hidden sm:inline">{t('nav.weatherForecastShort')}</span>
+              </button>
+            )}
+
             {currentFarmer && (
               <div className="text-right">
                 <div className="flex items-center justify-end gap-2">

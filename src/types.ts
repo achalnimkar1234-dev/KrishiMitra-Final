@@ -247,3 +247,63 @@ export interface GovernmentSubsidy {
   minAreaHectares?: number;
   maxAreaHectares?: number;
 }
+
+export type WeatherConditionType =
+  | 'clear'
+  | 'partly_cloudy'
+  | 'cloudy'
+  | 'light_rain'
+  | 'moderate_rain'
+  | 'heavy_rain'
+  | 'thunderstorm';
+
+export interface DailyForecast {
+  date: string;
+  dayName: string;
+  dayShort: string;
+  condition: WeatherConditionType;
+  minTemp: number;
+  maxTemp: number;
+  rainProbability: number;
+  rainfallMm: number;
+  windSpeedKmh: number;
+  windDirection: string;
+  humidityPercent: number;
+  soilMoistureStatus: 'dry' | 'moderate' | 'optimal' | 'excessive';
+  sowingFit: 'suitable' | 'moderate' | 'avoid';
+  advisoryNote?: string;
+}
+
+export type SowingStatus = 'suitable' | 'wait' | 'avoid';
+
+export interface SowingRecommendation {
+  status: SowingStatus;
+  statusLabelKey: string;
+  recommendedWindow: string;
+  cropId: CropId | null;
+  cropName: string;
+  reason: string;
+  reasonKey?: string;
+  weatherSuitability: 'suitable' | 'moderate' | 'unfavorable';
+  soilWaterSuitability: 'suitable' | 'moderate' | 'unfavorable';
+  soilWaterSummary: string;
+  weatherSummary: string;
+  farmerAdvice: string[];
+}
+
+export interface WeatherForecastData {
+  location: {
+    village: string;
+    taluka: string;
+    district: string;
+    plotId?: string;
+    areaHectares?: number;
+  };
+  generatedAt: string;
+  forecast: DailyForecast[];
+  sowingRecommendation: SowingRecommendation;
+  totalWeeklyRainfallMm: number;
+  avgTemp: number;
+  avgHumidity: number;
+}
+

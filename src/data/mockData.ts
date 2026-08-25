@@ -16,7 +16,7 @@ import type {
 export const farmers: Farmer[] = [
   {
     id: 'MH-DEMO-FR-0001',
-    name: 'Demo Farmer (Rajesh)',
+    name: 'Rajesh Patil',
     village: 'Demo Village',
     taluka: 'Panhala',
     district: 'Kolhapur',
@@ -25,7 +25,7 @@ export const farmers: Farmer[] = [
   },
   {
     id: 'MH-DEMO-FR-0002',
-    name: 'Demo Farmer (Sunita)',
+    name: 'Sunita Patil',
     village: 'Demo Village 2',
     taluka: 'Barshi',
     district: 'Solapur',
@@ -34,7 +34,7 @@ export const farmers: Farmer[] = [
   },
   {
     id: 'MH-DEMO-FR-0003',
-    name: 'Demo Farmer (Amit)',
+    name: 'Amit Shinde',
     village: 'Demo Village 3',
     taluka: 'Amravati',
     district: 'Amravati',
